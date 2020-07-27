@@ -6,7 +6,6 @@ import Button from '../common/Button';
 /*
 회원가입 또는 로그인 폼을 보여줍니다.
 */
-
 const AuthFormBlock = styled.div`
     h3 {
       margin:0;
@@ -32,7 +31,6 @@ const StyledInput = styled.input`
     margin-top: 1rem;
   }
 `;
-
 /* 폼 하단에 로그인 혹은 회원가입 링크를 보여줌*/
 const Footer = styled.div`
     margin-top:2rem;
@@ -45,18 +43,36 @@ const Footer = styled.div`
       }
     }
 `;
+// 로그인 버튼 아래로 하나 내리기
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 1rem;
+`;
 
-const AuthForm =()=>{
+const textMap = {
+  login:'로그인',
+  register:'회원가입',
+};
+
+const AuthForm =({type})=>{
+  const text = textMap[type];
   return(
       <AuthFormBlock>
-        <h3>로그인</h3>
+        <h3>{text}</h3>
       <form>
         <StyledInput autoComplate="username" name="username" placeholder="아이디" />
         <StyledInput autoComplate="new-password" name="password" placeholder="비밀번호" type="password" />
-        <Button>로그인</Button>
-    </form>
+      {type ==='register' && (
+            <StyledInput autoComplate="new-password" name="passwordConfirm" placeholder="비밀번호 확인" type="password" />
+      )}
+        <ButtonWithMarginTop cyan fullWidth>{text}</ButtonWithMarginTop>
+      </form>
         <Footer>
-          <Link to="/register">회원가입</Link>
+          {type === 'login' ?(
+              <Link to="/register">회원가입</Link>
+          ):(
+              <Link to="/login">로그인</Link>
+          )}
+
         </Footer>
       </AuthFormBlock>
   );

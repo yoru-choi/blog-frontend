@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom' //BrowserRouter 추가
 import {Provider } from 'react-redux'
 import {createStore} from 'redux'
-import {composeWithDevTools} from 'redux-devtools-extension'
+import {composeWithDevTools} from 'redux-devtools-extension' //웹에서 라우터 되나 체크용 -> 의미없다고 느낌
 import rootReducer from './modules'
 
 const store = createStore(rootReducer, composeWithDevTools());
