@@ -53,16 +53,16 @@ const textMap = {
   register:'회원가입',
 };
 
-const AuthForm =({type})=>{
+const AuthForm =({type, form , onChange , onSubmit})=>{
   const text = textMap[type];
   return(
       <AuthFormBlock>
         <h3>{text}</h3>
-      <form>
-        <StyledInput autoComplate="username" name="username" placeholder="아이디" />
-        <StyledInput autoComplate="new-password" name="password" placeholder="비밀번호" type="password" />
+      <form onSubmit={onSubmit}>
+        <StyledInput onChange={onChange} value={form.username} autoComplate="username" name="username" placeholder="아이디" />
+        <StyledInput onChange={onChange} value={form.password} autoComplate="new-password" name="password" placeholder="비밀번호" type="password" />
       {type ==='register' && (
-            <StyledInput autoComplate="new-password" name="passwordConfirm" placeholder="비밀번호 확인" type="password" />
+            <StyledInput onChange={onChange} value={form.passwordConfirm}  autoComplate="new-password" name="passwordConfirm" placeholder="비밀번호 확인" type="password" />
       )}
         <ButtonWithMarginTop cyan fullWidth>{text}</ButtonWithMarginTop>
       </form>
