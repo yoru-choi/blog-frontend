@@ -10,7 +10,7 @@ export const createRequestActionTypes = type =>{
 export default function createRequestSaga(type, request){
   const SUCCESS = `${type}_SUCCESS`;
   const FAILURE = `${type}_FAILURE`;
-
+ 
   return function*(action){
     yield put(startLoading(type)); //로딩시작
     try{
