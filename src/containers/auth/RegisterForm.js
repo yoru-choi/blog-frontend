@@ -67,6 +67,7 @@ const RegisterForm =({history})=>{
   useEffect(()=>{
     if(user){
       history.push('/'); // 홈 화면으로 이동
+      localStorage.setItem('user', JSON.stringify(user));
     }
   },[history, user]);
 
